@@ -1,20 +1,22 @@
 //your code here!
-const list = document.getElementById('infi-list');
-const items = ['infi-List Item 11', 'infi-List Item 12'];
+let list = document.querySelector("#infi-list");
+// console.log(list);
 
-function addItems() {
-  for (let i = 0; i < items.length; i++) {
-    const li = document.createElement('li');
-    li.textContent = items[i];
-    list.appendChild(li);
-  }
+for(let i=1; i<=10; i++)
+{
+  list.innerHTML += `<li>Item ${i}</li>`
 }
 
-addItems();
+let n = 10;
 
-list.addEventListener('scroll', () => {
-  if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
-    addItems();
+list.addEventListener("scroll", ()=>{
+ 
+  if(list.scrollHeight - list.scrollTop - list.clientHeight < 1){
+ 
+    list.innerHTML += `
+    <li>Item ${n+1}</li>
+    <li>Item ${n+2}</li>
+    `
+    n=n+2;
   }
-});
-
+})
